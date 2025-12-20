@@ -1,35 +1,61 @@
 body {
-    background-color: #e8ecf0;
+    background-color: #FFFFFF;
+}
+
+a {
+    /* Remove line under clickable links */
+    text-decoration: none;
 }
 
 .hero-section {
     min-height: 600px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .hero-container {
     margin-top: 40px;
     text-align: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: grid;
 }
 
 .info-container {
     min-height: 340px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: grid;
     grid-template-columns: 3fr 6fr;
     padding-top: 50px;
 }
 
-.info-container > * {
-    border: 1px solid black;
+/* 50px gutter to top and bottom div */
+.info-container-apps, .info-container-links {
+    padding: 0 50px 0 50px;
+}
+
+.info-app-container-top {
+    display: flex;
+    gap: 8px;
+}
+
+.info-app-container-bottom-card {
+    background-color: #F8F9FA;
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+}
+
+.info-app-container-bottom-card-wikimedia-img {
+    padding: 8px 10px 0 10px;
+}
+
+.info-app-container-bottom-right-side {
+    margin-top: -8px;
+    padding: 0 16px 12px 0;
 }
 
 .info-container-links-child {
     display: flex;
     padding: 14px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     gap: 10px;
 }
 
