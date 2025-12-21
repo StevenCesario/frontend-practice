@@ -1,0 +1,3 @@
+* Finish hero section
+* Global section padding
+* Clamp functions
