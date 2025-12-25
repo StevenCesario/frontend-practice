@@ -1,0 +1,40 @@
+/* VARIABLES */
+:root {
+    /* COLOR */
+    --header-separator: #E5E5E5;
+
+    /* SPACING */
+    --header-min-height: 10.2rem;
+    --header-gap: 30rem;
+}
+
+/* MAKING 1 rem EQUAL 10px + BODY CONFIG */
+html {
+  font-size: 62.5%; 
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: serif;
+    background-color: #FFFFFF;
+    margin: 0;
+}
+
+header {
+    border-bottom: 0.4rem solid var(--header-separator);
+    min-height: var(--header-min-height);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: var(--header-gap)
+}
+
+.hero-section {
+    border: 2px solid black;
+    min-height: calc(100vh - var(--header-min-height));
+}
+
+.features-section {
+    border: 2px solid red;
+    min-height: 40rem;
+}
