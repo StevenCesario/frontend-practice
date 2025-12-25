@@ -1,7 +1,8 @@
 /* VARIABLES */
 :root {
     /* COLOR */
-    --section-separator: #E5E5E5;
+    --accent-color: #E5E5E5;
+    --accent-color-darker: #AFAFAF;
 
     /* SPACING */
     --section-border: 0.4rem;
@@ -14,6 +15,8 @@
     --hero-text-wrapper-padding-top: 12rem;
     --hero-text-wrapper-padding-right: 60rem;
     --hero-heading-character-width: 30ch;
+
+    --flag-items-carousel-viewport-max-width: 80rem;
 }
 
 /* MAKING 1 rem EQUAL 10px + BODY CONFIG */
@@ -29,7 +32,7 @@ body {
 }
 
 header {
-    border-bottom: var(--section-border) solid var(--section-separator);
+    border-bottom: var(--section-border) solid var(--accent-color);
     min-height: var(--header-min-height);
     display: flex;
     justify-content: space-evenly;
@@ -39,7 +42,7 @@ header {
 
 .hero-section {
     min-height: calc(100vh - var(--header-min-height));
-    border-bottom: var(--section-border) solid var(--section-separator);
+    border-bottom: var(--section-border) solid var(--accent-color);
 
     /* These two lines are needed to use flex: 1 on the child elements growing vertically */
     display: flex;
@@ -83,8 +86,69 @@ header {
 }
 
 .hero-flag-items-wrapper {
-    border: 2px solid black;
-    margin-top: auto
+    margin-top: auto;
+    min-height: calc(var(--header-min-height) * 1.1);
+    border-top: var(--section-border) solid var(--accent-color);
+    /* border: 5px solid black; */
+    display: flex;
+    justify-content: center;
+}
+
+.flag-items-carousel-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.flag-items-carousel__viewport {
+    width: 80%;
+    max-width: var(--flag-items-carousel-viewport-max-width); /* Safety limit for huge screens */
+    margin: 0 auto; /* Center the carousel */
+
+    overflow-x: auto; /* Enables the sliding */
+    scroll-behavior: smooth; /* Makes the movement flowing */
+    scroll-snap-type: x mandatory; /* Forces the scroll to stop exactly on an item */
+    scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.flag-items-carousel__viewport::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.flag-items-carousel__viewport {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.flag-items-carousel__list {
+    display: flex;
+    justify-content: center;
+    gap: calc(var(--content-gap) * 4.2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.flag-items-carousel__arrow {
+    fill: var(--accent-color-darker);
+    display: block; /* Remove any inline-block gap at the bottom of the SVG */
+}
+
+/* Ensure the anchors holding the SVGs don't add weird height */
+.flag-items-carousel-wrapper > a {
+    display: flex;
+    align-items: center;
+}
+
+.flag-item {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--content-gap) * 2.0);
+
+    /* Math: (100% / 6-7 items) - (accounting for gaps) */
+    flex: 0 0 calc((100% / 7) - 1.4rem);
+    scroll-snap-align: center; /* Tells the slider where to stop */
 }
 
 .features-section {
