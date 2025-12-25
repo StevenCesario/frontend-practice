@@ -1,11 +1,19 @@
 /* VARIABLES */
 :root {
     /* COLOR */
-    --header-separator: #E5E5E5;
+    --section-separator: #E5E5E5;
 
     /* SPACING */
-    --header-min-height: 10.2rem;
+    --section-border: 0.4rem;
+    --content-gap: 0.8rem;
+
+    --header-min-height: 9.2rem;
     --header-gap: 30rem;
+
+    --hero-media-wrapper-padding-top: 24rem;
+    --hero-text-wrapper-padding-top: 12rem;
+    --hero-text-wrapper-padding-right: 60rem;
+    --hero-heading-character-width: 30ch;
 }
 
 /* MAKING 1 rem EQUAL 10px + BODY CONFIG */
@@ -21,7 +29,7 @@ body {
 }
 
 header {
-    border-bottom: 0.4rem solid var(--header-separator);
+    border-bottom: var(--section-border) solid var(--section-separator);
     min-height: var(--header-min-height);
     display: flex;
     justify-content: space-evenly;
@@ -30,11 +38,55 @@ header {
 }
 
 .hero-section {
-    border: 2px solid black;
     min-height: calc(100vh - var(--header-min-height));
+    border-bottom: var(--section-border) solid var(--section-separator);
+
+    /* These two lines are needed to use flex: 1 on the child elements growing vertically */
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-wrapper {
+    /* Needed for flex: 1 to work AND to push the flags container to the bottom with margin-top: auto */
+    display: flex;
+    flex-direction: column;
+
+    /* Take up all the available space in the parent continer */
+    flex: 1;
+    width: 100%;
+}
+
+.hero-content-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hero-media-wrapper {
+    display: flex;
+    justify-content: end;
+    padding-top: var(--hero-media-wrapper-padding-top)
+}
+
+.hero-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--content-gap) * 1.8);
+    text-align: center;
+    padding-top: var(--hero-text-wrapper-padding-top);
+    padding-right: var(--hero-text-wrapper-padding-right);
+}
+
+.hero-heading {
+    width: var(--hero-heading-character-width);
+}
+
+.hero-flag-items-wrapper {
+    border: 2px solid black;
+    margin-top: auto
 }
 
 .features-section {
-    border: 2px solid red;
     min-height: 40rem;
 }
