@@ -6,7 +6,9 @@
 
     /* SPACING */
     --section-border: 0.4rem;
-    --content-gap: 0.8rem;
+    --section-padding-inline: 52rem;
+    --section-padding-block: 14rem;
+    --content-gap: 1rem;
 
     --header-min-height: 9.2rem;
     --header-gap: 30rem;
@@ -40,8 +42,14 @@ header {
     gap: var(--header-gap)
 }
 
+section {
+    padding-inline: var(--section-padding-inline);
+    padding-block: var(--section-padding-block);
+}
+
 .hero-section {
     min-height: calc(100vh - var(--header-min-height));
+    padding-block: 0; /* Already perfectly defined by the min-heigh */
     border-bottom: var(--section-border) solid var(--accent-color);
 
     /* These two lines are needed to use flex: 1 on the child elements growing vertically */
@@ -66,7 +74,7 @@ header {
 
 .hero-media-wrapper {
     display: flex;
-    justify-content: end;
+    /* justify-content: end; */
     padding-top: var(--hero-media-wrapper-padding-top)
 }
 
@@ -78,7 +86,7 @@ header {
     gap: calc(var(--content-gap) * 1.8);
     text-align: center;
     padding-top: var(--hero-text-wrapper-padding-top);
-    padding-right: var(--hero-text-wrapper-padding-right);
+    /* padding-right: var(--hero-text-wrapper-padding-right); */
 }
 
 .hero-heading {
@@ -153,4 +161,39 @@ header {
 
 .features-section {
     min-height: 40rem;
+}
+
+.features-section-grid-wrapper {
+    display: grid;
+    gap: calc(var(--content-gap) * 3);
+}
+
+/* Alternating card layout! */
+.features-section-grid-wrapper > :nth-child(even) > .feature-card-item__media-wrapper {
+    order: -1;
+    justify-content: center;
+}
+
+.feature-card-item {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.feature-card-item__text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50ch;
+    font-size: larger;
+}
+
+.feature-card-item__heading {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.feature-card-item__media-wrapper {
+    display: flex;
+    justify-content: center;
+    /* border: 4px solid red; */
 }
